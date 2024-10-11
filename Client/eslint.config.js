@@ -7,43 +7,39 @@ import eslintPluginPrettier from 'eslint-plugin-prettier'
 
 export default tseslint.config(
   {
-    ignores: [
-      'dist',
-      'vite.config.ts'
-    
-  ] },
+    ignores: ['dist', 'vite.config.ts']
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: globals.browser
     },
     plugins: {
       prettier: eslintPluginPrettier,
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      'react-refresh': reactRefresh
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'max-len': ['error', { code: 80, ignoreUrls: true }],
+      // indent: 'warn',
       'prettier/prettier': [
-      'warn',
-      {
-        arrowParens: 'always',
-        semi: false,
-        trailingComma: 'none',
-        tabWidth: 2,
-        endOfLine: 'auto',
-        useTabs: false,
-        singleQuote: true,
-        printWidth: 120,
-        jsxSingleQuote: true
-      }
-    ]
-    },
-  },
+        'warn',
+        {
+          arrowParens: 'always',
+          semi: false,
+          trailingComma: 'none',
+          tabWidth: 2,
+          endOfLine: 'auto',
+          useTabs: false,
+          singleQuote: true,
+          printWidth: 120,
+          jsxSingleQuote: true
+        }
+      ]
+    }
+  }
 )
